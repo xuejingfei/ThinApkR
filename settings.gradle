@@ -1,1 +1,1 @@
-include ':app', ':rmodule'
+include ':app', ':rmodule', ':thinrplugin'
