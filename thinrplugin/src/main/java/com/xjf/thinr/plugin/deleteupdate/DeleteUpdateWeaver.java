@@ -21,6 +21,6 @@ public class DeleteUpdateWeaver extends BaseWeaver {
 
     @Override
     public boolean isWeavableClass(String fullQualifiedClassName) {
-        return ScanSetting.isRClass(fullQualifiedClassName) || super.isWeavableClass(fullQualifiedClassName);
+        return fullQualifiedClassName.endsWith(".class") && !fullQualifiedClassName.contains("BuildConfig.class");
     }
 }

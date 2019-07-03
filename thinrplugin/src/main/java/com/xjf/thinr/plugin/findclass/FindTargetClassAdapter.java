@@ -21,6 +21,7 @@ public class FindTargetClassAdapter extends ClassVisitor {
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
         super.visit(version, access, name, signature, superName, interfaces);
         mClassName = name;
+
     }
 
     @Override
@@ -31,7 +32,7 @@ public class FindTargetClassAdapter extends ClassVisitor {
     @Override
     public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
         if(value instanceof Integer) {
-            System.out.println("key:" + mClassName + name + "------>" +value);
+//            System.out.println("key:" + mClassName + name + "------>" +value);
             ScanSetting.mRClassMaps.put(mClassName + name,(Integer) value);
         }
         return super.visitField(access, name, desc, signature, value);

@@ -1,6 +1,7 @@
 package com.xjf.thinr.plugin;
 
 import com.android.build.gradle.AppExtension;
+import com.xjf.thinr.plugin.deleteupdate.DeleteUpdateTransform;
 import com.xjf.thinr.plugin.findclass.FindRClassTransform;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
@@ -18,5 +19,6 @@ public class ThinApkRPlugin implements Plugin<Project> {
         System.out.println("---this is ThinApkRPlugin----");
         AppExtension extension =  (AppExtension) project.getProperties().get("android");
         extension.registerTransform(new FindRClassTransform(project));
+        extension.registerTransform(new DeleteUpdateTransform(project));
     }
 }

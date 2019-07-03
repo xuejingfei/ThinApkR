@@ -32,12 +32,14 @@ public class DeleteUpdateAdapter extends ClassVisitor {
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
         super.visit(version, access, name, signature, superName, interfaces);
         isRClass = ScanSetting.isRClass(name+".class");
+        if(isRClass){
+            System.out.println("寻找的R.class的文件"+name);
+        }
     }
 
     @Override
     public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
         if (isRClass && value instanceof Integer) {
-            System.out.println("name" + name + "---->" + "des" + desc);
             return null;
         }
         return super.visitField(access, name, desc, signature, value);
