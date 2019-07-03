@@ -1,5 +1,6 @@
 package com.xjf.thinr.plugin.deleteupdate;
 
+import com.xjf.thinr.plugin.ScanSetting;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.LocalVariablesSorter;
@@ -16,9 +17,16 @@ public class UpdateClassAdapter extends LocalVariablesSorter implements Opcodes 
         super(Opcodes.ASM5,access,desc, mv);
     }
 
-    @Override
-    public void visitIntInsn(int opcode, int operand) {
-        super.visitIntInsn(opcode, operand);
-    }
 
+    @Override
+    public void visitFieldInsn(int opcode, String owner, String name, String desc) {
+        String key = owner + name;
+        Integer value = ScanSetting.mRClassMaps.get(key);
+        if (value != null) {
+            System.out.println("替换对R.class的直接引用：+" + owner  + name);
+            super.visitLdcInsn(value);
+        } else {
+            super.visitFieldInsn(opcode, owner, name, desc);
+        }
+    }
 }

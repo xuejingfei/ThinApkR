@@ -22,7 +22,7 @@ uploadArchives {
             //GVA的参数
             pom.groupId = 'com.xjf.plugin'//组id
             pom.artifactId = 'thinApkR'//名称
-            pom.version = '1.0.1'//版本号
+            pom.version = '1.0.4'//版本号
             repository(url: uri('../repo'))//发布的目录
         }
     }

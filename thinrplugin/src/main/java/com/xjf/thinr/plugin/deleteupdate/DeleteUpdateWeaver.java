@@ -1,6 +1,7 @@
 package com.xjf.thinr.plugin.deleteupdate;
 
 import com.quinn.hunter.transform.asm.BaseWeaver;
+import com.xjf.thinr.plugin.ScanSetting;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
@@ -20,6 +21,6 @@ public class DeleteUpdateWeaver extends BaseWeaver {
 
     @Override
     public boolean isWeavableClass(String fullQualifiedClassName) {
-        return super.isWeavableClass(fullQualifiedClassName);
+        return ScanSetting.isRClass(fullQualifiedClassName) || super.isWeavableClass(fullQualifiedClassName);
     }
 }
