@@ -16,7 +16,6 @@ public class ScanSetting {
     private static final String REGEX_R_CLASS = ".*R\\$.*\\.class|.*R\\.class";
 
 
-
     /**
      * 判断该 class 文件是否是 R.class 类，及其内部类如 R$id.class，但是 R$styleable.class 类排除在外
      *
@@ -26,8 +25,6 @@ public class ScanSetting {
     public static boolean isRClass(String classFilePath) {
         return Pattern.matches(REGEX_R_CLASS, classFilePath);
     }
-
-
 
     
 }

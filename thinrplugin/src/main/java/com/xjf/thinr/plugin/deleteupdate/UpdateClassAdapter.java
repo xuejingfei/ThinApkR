@@ -23,7 +23,7 @@ public class UpdateClassAdapter extends LocalVariablesSorter implements Opcodes 
         String key = owner + name;
         Integer value = ScanSetting.mRClassMaps.get(key);
         if (value != null) {
-            System.out.println("替换对R.class的直接引用：+" + owner  + name);
+//            System.out.println("替换对R.class的直接引用：+" + owner  + name);
             super.visitLdcInsn(value);
         } else {
             super.visitFieldInsn(opcode, owner, name, desc);
